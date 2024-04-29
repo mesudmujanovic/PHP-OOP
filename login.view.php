@@ -2,6 +2,11 @@
 require_once "include/header.php";
 require_once "app/classes/User.php";
 
+if($user->is_logged()){
+  header("Location: index.php");
+  exit();
+}
+
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $username = $_POST['username'];
     $password = $_POST['password'];

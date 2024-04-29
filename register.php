@@ -1,8 +1,8 @@
 <?php 
-require_once "header.php"; 
+require_once "include/header.php"; 
 ?>
 
-<form method="post" action="register/register.view.php">
+<form method="post" action="register.view.php">
 <div class="form-group mb-3">
 <label for="name">Full Name</label>
 <input type="text" class="form-control" id="name" name="name" required>

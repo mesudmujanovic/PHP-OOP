@@ -13,12 +13,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if($created) {
         $_SESSION['message']['type'] = "success";
         $_SESSION['message']['text'] = "success registred account";
-      header("Location: login/login.php");
+      header("Location:login.php");
       exit();
     } else {
         $_SESSION['message']['type'] = "danger";
         $_SESSION['message']['text'] = "Not registered";
-        header("Location: register/register.php");
+        header("Location:register.php");
         exit();
     }
 }

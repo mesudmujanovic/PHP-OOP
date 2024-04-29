@@ -27,17 +27,22 @@ $user = new User();
       <ul class="navbar-nav ml-auto">
         <?php if(!$user->is_logged()) : ?>
         <li class="nav-item">
-          <a class="nav-link" href="register/register.php">Register</a>
+          <a class="nav-link" href="register.php">Register</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="login/login.php">Login</a>
+          <a class="nav-link" href="login.php">Login</a>
         </li>
         <?php else : ?>
-            <li class="nav-item">
+          <li class="nav-item">
+          <a class="nav-link" href="cart.php">
+            Cart
+          </a>
+        </li> 
+          <li class="nav-item">
           <a class="nav-link" href="orders.php">My Orders</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="logout/logout.php">Logout</a>
+          <a class="nav-link" href="logout.php">Logout</a>
         </li>
         <?php endif; ?>
       </ul>
