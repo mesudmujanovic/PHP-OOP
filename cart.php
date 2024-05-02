@@ -17,6 +17,7 @@ $cart_items = $cart->get_cart_items();
         <th scope="col">Product Name</th>
         <th scope="col">Size</th>
         <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
         <th scope="col">Image</td>
     </tr>
 </thead>
@@ -26,6 +27,7 @@ $cart_items = $cart->get_cart_items();
         <th><?php echo $item['name']; ?></th>
         <th><?php echo $item['size']; ?></th>
         <th><?php echo $item['price']; ?></th>
+        <th><?php echo $item['quantity']; ?></th>
         <th> <img src="<?php echo $item['name']; ?>" height="50"></th>
     </tr>
     <?php endforeach; ?>

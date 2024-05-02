@@ -9,14 +9,14 @@ class Cart{
      $this->conn = $conn;
     }
 
-    public function add_to_cart($product_id, $user_id){
-     $stmt = $this->conn->prepare("INSERT INTO cart (product_id, user_id) VALUES (?,?)");
-     $stmt->bind_param("ii", $product_id, $user_id);
+    public function add_to_cart($product_id, $user_id, $quantity){
+     $stmt = $this->conn->prepare("INSERT INTO cart (product_id, user_id, quantity) VALUES (?,?,?)");
+     $stmt->bind_param("iis", $product_id, $user_id, $quantity);
      return $stmt->execute();
     }
 
     public function get_cart_items(){
-        $stmt = $this->conn->prepare("SELECT p.product_id, p.name, p.price, p.size, p.image
+        $stmt = $this->conn->prepare("SELECT p.product_id, p.name, p.price, p.size, p.image, c.quantity
                                       FROM cart c
                                       INNER JOIN products p
                                       ON c.product_id = p.product_id
@@ -26,7 +26,6 @@ class Cart{
         $stmt->bind_param("i", $user_id);
         $stmt->execute();
     
-        // Provera grešaka u izvršavanju upita
         if ($stmt->error) {
             echo "Greška prilikom izvršavanja upita: " . $stmt->error;
             exit();
@@ -34,6 +33,12 @@ class Cart{
     
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function destroy_cart(){
+        $stmt = $this->conn->prepare("DELETE FROM cart WHERE user_id = ?");
+        $stmt->bind_param("i", $_SESSION['user_id']);
+        $stmt->execute();
     }
     
 }
